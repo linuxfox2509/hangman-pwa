@@ -1,0 +1,11 @@
+{
+  "name": "Hangman",
+  "short_name": "Hangman",
+  "description": "A local multiplayer hangman PWA for shared play.",
+  "theme_color": "#111827",
+  "background_color": "#111827",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/",
+  "scope": "/"
+}

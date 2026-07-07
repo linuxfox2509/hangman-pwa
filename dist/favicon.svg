@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Hangman logo">
+  <rect width="64" height="64" rx="16" fill="#0f172a" />
+  <path d="M18 50h28" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" />
+  <path d="M24 50V18h12" stroke="#f8fafc" stroke-width="4" stroke-linecap="round" />
+  <circle cx="36" cy="24" r="5" fill="#f59e0b" />
+  <path d="M36 29v12" stroke="#f8fafc" stroke-width="4" stroke-linecap="round" />
+  <path d="M30 33l-6 8" stroke="#f8fafc" stroke-width="4" stroke-linecap="round" />
+  <path d="M42 33l6 8" stroke="#f8fafc" stroke-width="4" stroke-linecap="round" />
+</svg>

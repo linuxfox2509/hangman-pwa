@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/types.ts","./src/vite-env.d.ts","./src/components/gamescreen.tsx","./src/components/hangmandisplay.tsx","./src/components/keyboard.tsx","./src/components/settings.tsx","./src/components/startscreen.tsx","./src/components/worddisplay.tsx","./src/hooks/usegame.ts","./src/utils/storage.ts","./src/utils/word.ts"],"version":"5.9.3"}
