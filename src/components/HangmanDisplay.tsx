@@ -22,7 +22,7 @@ export const HangmanDisplay = ({ stage }: HangmanDisplayProps) => {
 
   return (
     <div className="flex items-center justify-center rounded-3xl border border-slate-200 bg-white/70 p-4 shadow-sm">
-      <img src={stages[safeStage]} alt={`Hangman stage ${safeStage}`} className="h-64 w-auto object-contain sm:h-80" />
+      <img src={stages[safeStage]} alt={`Hangman stage ${safeStage}`} className="h-64 w-auto object-contain sm:h-80 md:h-52 xl:h-80" />
     </div>
   );
 };

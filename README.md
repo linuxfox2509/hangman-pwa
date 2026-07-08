@@ -9,6 +9,12 @@ docker build -t hangman-pwa .
 docker run -d -p 80:80 --name hangman-pwa hangman-pwa
 ```
 
+Or use Docker Compose:
+
+```bash
+docker compose up -d --build
+```
+
 Then open your browser to `http://<server-ip>/`.
 
 If you need a different port:

@@ -33,46 +33,54 @@ export const GameScreen = ({ game, settings, onGuess, onNewGame, onOpenSettings 
         </div>
       </header>
 
-      <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
-        <div className="space-y-4 rounded-[28px] border border-slate-200 bg-white/80 p-4 shadow-sm backdrop-blur sm:p-6">
+      <div className="grid min-h-0 gap-4 xl:grid-cols-[1.1fr_0.9fr]">
+        <div className="min-h-0 overflow-visible rounded-[28px] border border-slate-200 bg-white/80 p-4 shadow-sm backdrop-blur sm:p-6">
           <div className="rounded-2xl bg-slate-50 p-3 text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-500">Hint</p>
             <p className="mt-1 text-lg font-semibold text-slate-900">{game.hint || 'No hint provided.'}</p>
           </div>
 
-          <HangmanDisplay stage={stage} />
+          <div className="grid gap-4 items-start md:grid-cols-[minmax(0,0.55fr)_minmax(0,0.45fr)] xl:grid-cols-1">
+            <div className="min-w-0">
+              <HangmanDisplay stage={stage} />
+            </div>
 
-          <div className="rounded-2xl bg-slate-50 p-4 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-500">Word</p>
-            <div className="mt-2">
-              <WordDisplay secretWord={game.secretWord} guessedLetters={game.guessedLetters} />
+            <div className="min-w-0 rounded-2xl bg-slate-50 p-4 text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-500">Word</p>
+              <div className="mt-2">
+                <WordDisplay secretWord={game.secretWord} guessedLetters={game.guessedLetters} />
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="space-y-4 rounded-[28px] border border-slate-200 bg-white/80 p-4 shadow-sm backdrop-blur sm:p-6">
-          <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-2xl bg-slate-50 p-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-500">Mistakes</p>
-              <p className="mt-1 text-3xl font-black text-slate-900">{game.mistakes} / {settings.maxMistakes}</p>
+        <div className="flex min-h-0 flex-col overflow-hidden space-y-4 rounded-[28px] border border-slate-200 bg-white/80 p-4 shadow-sm backdrop-blur sm:p-6">
+          <div className="flex min-h-0 flex-col gap-4 overflow-auto">
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl bg-slate-50 p-4">
+                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-500">Mistakes</p>
+                <p className="mt-1 text-3xl font-black text-slate-900">{game.mistakes} / {settings.maxMistakes}</p>
+              </div>
+              <div className="rounded-2xl bg-slate-50 p-4">
+                <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-500">Remaining</p>
+                <p className="mt-1 text-3xl font-black text-slate-900">{remaining}</p>
+              </div>
             </div>
-            <div className="rounded-2xl bg-slate-50 p-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-500">Remaining</p>
-              <p className="mt-1 text-3xl font-black text-slate-900">{remaining}</p>
+
+            <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white/80 p-4 shadow-sm md:max-h-[40vh] md:overflow-auto">
+              <Keyboard game={game} onGuess={onGuess} />
             </div>
+
+            {(game.status === 'won' || game.status === 'lost') && (
+              <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-center">
+                <h3 className="text-2xl font-black text-slate-900">{game.status === 'won' ? 'You Win!' : 'Game Over'}</h3>
+                <p className="mt-2 text-sm text-slate-600">The word was: <span className="font-semibold uppercase text-slate-900">{game.secretWord}</span></p>
+                <button type="button" onClick={onNewGame} className="mt-4 rounded-full bg-sky-600 px-5 py-3 font-semibold text-white shadow transition hover:bg-sky-700">
+                  New Game
+                </button>
+              </div>
+            )}
           </div>
-
-          <Keyboard game={game} onGuess={onGuess} />
-
-          {(game.status === 'won' || game.status === 'lost') && (
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 text-center">
-              <h3 className="text-2xl font-black text-slate-900">{game.status === 'won' ? 'You Win!' : 'Game Over'}</h3>
-              <p className="mt-2 text-sm text-slate-600">The word was: <span className="font-semibold uppercase text-slate-900">{game.secretWord}</span></p>
-              <button type="button" onClick={onNewGame} className="mt-4 rounded-full bg-sky-600 px-5 py-3 font-semibold text-white shadow transition hover:bg-sky-700">
-                New Game
-              </button>
-            </div>
-          )}
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type { Settings } from '../types';
 
 interface StartScreenProps {
@@ -26,8 +25,6 @@ export const StartScreen = ({
   error,
   settings
 }: StartScreenProps) => {
-  const [showSecret, setShowSecret] = useState(false);
-
   return (
     <div className="mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-4 py-8 sm:px-6 lg:px-8">
       <div className="rounded-[32px] border border-slate-200 bg-white/80 p-6 shadow-2xl backdrop-blur sm:p-8 lg:p-10">
@@ -49,22 +46,20 @@ export const StartScreen = ({
           <div className="space-y-4">
             <label className="block text-sm font-semibold text-slate-700">
               Secret word
-              <div className="relative mt-2">
+              <div className="mt-2">
                 <input
-                  type={showSecret ? 'text' : 'password'}
+                  type="text"
                   value={secretWord}
                   onChange={(event) => onSecretWordChange(filterWordInput(event.target.value))}
                   maxLength={maxWordLength}
+                  autoComplete="off"
+                  autoCapitalize="characters"
+                  autoCorrect="off"
+                  spellCheck={false}
+                  inputMode="text"
                   placeholder="Enter a secret word"
-                  className="w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-4 pr-28 text-xl font-semibold tracking-[0.2em] text-slate-900 outline-none ring-0 placeholder:text-slate-400 focus:border-sky-500"
+                  className="w-full rounded-2xl border border-slate-300 bg-slate-50 px-4 py-4 text-xl font-semibold tracking-[0.2em] text-slate-900 outline-none ring-0 placeholder:text-slate-400 focus:border-sky-500"
                 />
-                <button
-                  type="button"
-                  onClick={() => setShowSecret((value) => !value)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-100"
-                >
-                  {showSecret ? 'Hide' : 'Show'}
-                </button>
               </div>
             </label>
             <p className="text-sm text-slate-500">{secretWord.length} / {maxWordLength} characters</p>

@@ -5,8 +5,8 @@ const STORAGE_KEY = 'hangman-settings';
 export const defaultSettings: Settings = {
   wordLimitMode: 'auto',
   wordLimit: 80,
-  maxMistakes: 6,
-  soundEffects: true
+  maxMistakes: 11,
+  soundEffects: false
 };
 
 export const loadSettings = (): Settings => {

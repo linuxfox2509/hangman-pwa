@@ -1,0 +1,9 @@
+services:
+  hangman-pwa:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hangman-pwa
+    ports:
+      - "80:80"
+    restart: unless-stopped
